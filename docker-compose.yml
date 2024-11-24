@@ -23,21 +23,21 @@ services:
     restart: unless-stopped    
     env_file: .env
     environment:
-      - WORDPRESS_DB_HOST=db:3306
+      - WORDPRESS_DB_HOST=database:3306
       - WORDPRESS_DB_USER=$MYSQL_USER
       - WORDPRESS_DB_PASSWORD=$MYSQL_PASSWORD
       - WORDPRESS_DB_NAME=wordpress
-      - WP_REDIS_HOST=redis
-      - WP_REDIS_PORT=6379
+#      - WP_REDIS_HOST=redis
+#      - WP_REDIS_PORT=6379
     volumes:
       - wordpress:/var/www/html
     networks:
       - web-net
       - app-network
 
-  db:
+  database:
     image: mysql:8.0
-    container_name: db 
+    container_name: database 
     restart: unless-stopped
     env_file: .env
     environment:
@@ -61,6 +61,4 @@ volumes:
 
 networks:
   web-net:
-    driver: bridge
   app-network:
-    driver: bridge
