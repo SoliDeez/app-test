@@ -8,6 +8,7 @@ localhost
 Язык - Русский
 login: test
 password: test
+Разрешить использование слабого пароля.
 e-mail: test@example.com
 
 - Для активации ObjectCache:

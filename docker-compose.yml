@@ -9,13 +9,14 @@ services:
       - "80:80"
     volumes:
       - wordpress:/var/www/html
+#      - ./.wp:/var/www/html
       - ./nginx-conf:/etc/nginx/conf.d
     networks:
       - web-net
 
   wordpress:
     depends_on:
-      - db
+      - database
       - redis
     build: ./wp
 #    image: wordpress:6.7.1-fpm-alpine
@@ -30,6 +31,7 @@ services:
 #      - WP_REDIS_HOST=redis
 #      - WP_REDIS_PORT=6379
     volumes:
+#      - ./.wp:/var/www/html    
       - wordpress:/var/www/html
     networks:
       - web-net
