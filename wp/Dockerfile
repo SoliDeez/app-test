@@ -1,11 +1,13 @@
-FROM wordpress:6.7.1-fpm-alpine
+FROM wordpress:latest
 
 WORKDIR /var/www/html
 
 COPY upload/plugin/ /var/www/html/wp-content/plugins/
 
-COPY wp-config-docker.php /usr/src/wordpress/
+COPY upload/wpconf/wp-config-docker.php /usr/src/wordpress/
 
+#ENTRYPOINT ["docker-entrypoint.sh"]
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-CMD ["php-fpm"]
+#CMD ["php-fpm"]
+CMD ["apache2-foreground"]
